@@ -3,133 +3,132 @@
         <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Campus Connect
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-  
+
         <div class="d-flex flex-row-reverse">
-            <!---<a class="btn btn-primary"  (click)= 'logout()''>Log Out</a>-->
+            <a class="btn btn-primary" (click)='logout()'>Log Out</a>
         </div>
     </div>
-  </nav><div class="jumbotron jumbotron-fluid">
+</nav>
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Trainer form-</h1>
     </div>
 </div>
-        <div class='container' style="padding-bottom:5%;">
-    <form  #f="ngForm">
+<div class='container' style="padding-bottom:5%;">
+    <form #f="ngForm">
         <div class="form-group row justify-content-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Trainer Name:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]='tname' name="tname" placeholder="Name of the trainer">
+                <input type="text" class="form-control" [(ngModel)]='tname' name="tname"
+                    placeholder="Name of the trainer">
             </div>
         </div>
         <div class="form-group row justify-content-center">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Age:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]='age' name="age" placeholder="Age (in years)">
+                <input type="number" class="form-control" [(ngModel)]='age' name="age" placeholder="Age (in years)">
             </div>
         </div>
         <div class="form-group row justify-content-center">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Experience(years):</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]='experience' name="experience" placeholder="Years of Experience">
+                <input type="number" class="form-control" [(ngModel)]='experience' name="experience"
+                    placeholder="Years of Experience">
             </div>
-        </div>  
+        </div>
 
         <div class="form-group row justify-content-center">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Contact No.:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]='contactno' name="contactno" placeholder="Enter valid contact number">
-            </div>
-        </div>  
-
-
-        <div class="form-group row ">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Java:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline1" name="javaskill" [(ngModel)]="javaskill" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">Yes</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="javaskill" [(ngModel)]="javaskill" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">No</label>
+                <input type="number" class="form-control" [(ngModel)]='contactno' name="contactno"
+                    placeholder="Enter valid contact number">
             </div>
         </div>
 
-        <div class="form-group row ">
-            <label for="inputPassword6" class="col-sm-2 col-form-label">C:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline3" [(ngModel)]="cskill" name="cskill" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline3">Yes</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline4" [(ngModel)]="cskill" name="cskill" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline4">No</label>
-            </div>
-        </div>    
-        <div class="form-group row ">
-            <label for="inputPassword7" class="col-sm-2 col-form-label">Android:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline5" [(ngModel)]="androidskill" name="androidskill" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline5">Yes</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline6" [(ngModel)]="androidskill" name="androidskill" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline6">No</label>
-            </div>
-        </div> 
+
+        <div class="form-group row justify-content-center">
+                <label for="inputPassword6" class="col-sm-2 col-form-label">Java:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="Java" [(ngModel)]="Java">
+                        <option *ngFor="let item of status">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+        </div>
+
+        <div class="form-group row justify-content-center">
+                <label for="inputPassword7" class="col-sm-2 col-form-label">C:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="C" [(ngModel)]="C">
+                        <option *ngFor="let item of status">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+        </div>
+        <div class="form-group row justify-content-center">
+                <label for="inputPassword8" class="col-sm-2 col-form-label">Android:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="Android" [(ngModel)]="Android">
+                        <option *ngFor="let item of status">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+        </div>
 
         <div class="form-group row justify-content-center">
             <label for="inputPassword8" class="col-sm-2 col-form-label">Email-Id:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]="emailid" name="emailid" placeholder="Enter valid Email ID">
-            </div>
-        </div>  
-
-        <div class="form-group row ">
-            <label for="inputPassword9" class="col-sm-2 col-form-label">May-Available:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline7"  [(ngModel)]="may" name="may" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline7">Yes</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline8" [(ngModel)]="may" name="may" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline8">No</label>
+                <input type="text" class="form-control" [(ngModel)]="emailid" name="emailid"
+                    placeholder="Enter valid Email ID">
             </div>
         </div>
 
-        <div class="form-group row ">
-            <label for="inputPassword10" class="col-sm-2 col-form-label">June-Available:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline9" [(ngModel)]="june" name="june" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline9">Yes</label>
-            </div>
+        <div class="form-group row justify-content-center">
+                <label for="inputPassword10" class="col-sm-2 col-form-label">May-Available:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="inMay" [(ngModel)]="inMay">
+                        <option *ngFor="let item of status">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+        </div>
 
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline10"  [(ngModel)]="june" name="june" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline10">No</label>
-            </div>
-        </div>    
-        <div class="form-group row ">
-            <label for="inputPassword11" class="col-sm-2 col-form-label">July-Available:</label> 
-            <div class="custom-control custom-radio custom-control-inline col-sm-10-form-label">
-                <input type="radio" id="customRadioInline11" [(ngModel)]="july" name="july" value="Yes" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline11">Yes</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline12"  [(ngModel)]="july" name="july" checked="checked" value="No" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline12">No</label>
-            </div>
-        </div>                     
+        <div class="form-group row justify-content-center">
+                <label for="inputPassword10" class="col-sm-2 col-form-label">June-Available:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="inJune" [(ngModel)]="inJune">
+                        <option *ngFor="let item of status">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+        </div>
 
+        <div class="form-group row justify-content-center">
+            <label for="inputPassword11" class="col-sm-2 col-form-label">July-Available:</label>
+            <div class="col-sm-10">
+                <select class="custom-select" name="inJuly" [(ngModel)]="inJuly">
+                    <option *ngFor="let item of status">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+        </div>
         <div class="form-group row justify-content-center">
             <div class="col-1">
                 <button (click)='addTrainer()' class="btn btn-primary">Add it.</button>
 
             </div>
-            <div class="col-2" >
+            <div class="col-2">
                 <button type="reset" class="btn btn-danger">Reset</button>
             </div>
         </div>

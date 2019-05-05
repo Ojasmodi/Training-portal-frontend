@@ -85,7 +85,7 @@ export class SignupComponent implements OnInit {
 
         }, (err) => {
 
-          this.toastr.error('some error occured');
+          this.toastr.error('Some error occured');
 
         });
 

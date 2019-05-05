@@ -57,13 +57,16 @@ export class LoginComponent implements OnInit {
             this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails)
 
             if (this.userType === 'admin') {
-              this.router.navigate(['/adminSection']);
+              this.toastr.success("Taking you to the Admin section",'Login Successful');
+              setTimeout(()=>{
+                this.router.navigate(['/adminSection']);
+              },2000);
             }
             else if (this.userType === 'trainer') {
               this.router.navigate(['/trainer']);
             }
             else {
-              this.router.navigate(['/student']);
+             this.router.navigate(['/student']);
             }
 
           } else {
@@ -74,7 +77,7 @@ export class LoginComponent implements OnInit {
           }
 
         }, (err) => {
-          this.toastr.error('some error occured')
+          this.toastr.error('Some error occured')
 
         });
 

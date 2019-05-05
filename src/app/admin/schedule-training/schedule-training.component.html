@@ -13,7 +13,6 @@
     </div>
   </div>
 </nav>
-<!--
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Add Schedule here-</h1>
@@ -24,14 +23,14 @@
       <div class="form-group row justify-content-center">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Classroom No:</label>
         <div class="col-sm-10">
-          <select class="custom-select" name="cno"><% List<Classroom> listofClassroom = ClassroomDAO.getAllClassrooms();
-                        for (Classroom c : listofClassroom) {%><option><%=c.getCNo()%><%}%></option></select>
+          <select class="custom-select" name="cno" [(ngModel)]="selectedClass">
+              <option  *ngFor="let class of classrooms" [value]="class.classNumber">{{class.classNumber}}</option></select>
             </div>
         </div>
         <div class="form-group row justify-content-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Course:</label>
             <div class="col-sm-10">
-                <select name="course" class="custom-select">
+                <select name="course" [(ngModel)]="course" class="custom-select">
                     <option value="Java">Java</option>
                     <option value="C">C</option>
                     <option value="Android">Android</option></select>
@@ -41,24 +40,22 @@
         <div class="form-group row justify-content-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Trainer:</label>
             <div class="col-sm-10">
-                <select name="trainer" class="custom-select">
-                    <% List<Trainer> listofTrainer = TrainerDAO.getAllTrainers();
-                        for (Trainer t : listofTrainer) {%>
-            <option><%=t.getName()%><%}%></option>
+                <select name="trainer" [(ngModel)]="selectedTrainer" class="custom-select">
+            <option *ngFor="let trainer of trainers" [value]="trainer.name">{{trainer.name}}</option>
                 </select>
             </div></div>
 
         <div class="form-group row justify-content-center">
             <label for="inputPassword8" class="col-sm-2 col-form-label">No. of Students:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="noOfStudents" placeholder="No.OfStudents">
+                <input type="number" class="form-control" [(ngModel)]="noOfStudents" name="noOfStudents" placeholder="No.OfStudents">
             </div>
         </div>                     
 
         <div class="form-group row justify-content-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Month of program:</label>
             <div class="col-sm-10">
-                <select name="MOP" class="custom-select">
+                <select name="MOP" [(ngModel)]="MOP" class="custom-select">
                     <option value="May">May</option>
                     <option value="June">June</option>
                     <option value="July">July</option></select>
@@ -67,7 +64,7 @@
 
         <div class="form-group row justify-content-center">
             <div class="col-1">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button (click)="addSchedule()" class="btn btn-primary">Add</button>
 
             </div>
             <div class="col-2" >
@@ -75,4 +72,4 @@
             </div>
         </div>
     </form>
-</div>-->
+</div>
