@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Discussion-forum</h1>
+  <br>
+  <br>
+  <br>
+  <div>
+    <div>
+      <a (click)="create()">Have a question?</a>
+      <div [hidden]="hasQuestion">
+        <input type="text" class="form-control" [(ngModel)]="topic" name="topic" placeholder="topic" required>
+        <textarea type="text" class="form-control" [(ngModel)]="details" placeholder="details" name="details"
+          required></textarea>
+        <button (click)="saveDiscussion()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    <div *ngIf="discussions">
+      <div *ngFor="let discussion of discussions">
+        <span>{{discussion.createdBy}}:</span>
+        <span>{{discussion.topic}}</span>&nbsp;&nbsp;
+        <span>{{discussion.createdOn|date}}</span><br>
+        <span>{{discussion.details}}</span><button class="btn btn-primary">View</button>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

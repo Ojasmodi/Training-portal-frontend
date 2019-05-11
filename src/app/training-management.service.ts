@@ -27,8 +27,21 @@ export class TrainingManagementService {
     return this._http.get(`${this.url}/training/trainer/all`);
   }
 
+  public addSchedule(data): any {
+    return this._http.post(`${this.url}/training/schedule/add`, data);
+  }
 
+  public deleteSchedule(data): any {
+    return this._http.post(`${this.url}/training/schedule/delete`, data);
+  }
 
+  public deleteTrainer(id): any {
+    let data = {};
+    return this._http.post(`${this.url}/training/trainer/delete/${id}`, data);
+  }
 
+  public getAllSchedules(): any {
+    return this._http.get(`${this.url}/training/schedule/all`);
+  }
 
 }

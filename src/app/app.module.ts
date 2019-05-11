@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ])
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

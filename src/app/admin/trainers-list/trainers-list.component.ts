@@ -19,8 +19,27 @@ export class TrainersListComponent implements OnInit {
 
   ngOnInit() {
     this.authToken = this.cookieService.get('authToken');
+    this.checkStatus();
     this.getAllTrainers();
   }
+
+  public checkStatus = () => {
+
+    if(this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
+      this.cookieService.get('authtoken') === null) {
+
+      this.toastr.error("Please login first");
+      this.router.navigate(['/']);
+
+      return false;
+
+    } else {
+
+      return true;
+
+    }
+
+  } // end checkStatus
 
   getAllTrainers() {
     this.trainingManagement.getAllTrainers()
@@ -32,6 +51,46 @@ export class TrainersListComponent implements OnInit {
         else {
           this.toastr.error("Some error occured");
         }
+      })
+  }
+
+  deleteTrainer(id) {
+
+    this.trainingManagement.deleteTrainer(id).subscribe((apiResponse) => {
+      if (apiResponse.status === 200) {
+        this.toastr.success("Trainer deleted successfully !");
+        setTimeout(() => {
+          this.router.navigate(['/trainersList']);
+        }, 1000);
+      }
+      else{
+        this.toastr.error(apiResponse.message);
+      }
+    },
+      (err) => {
+        this.toastr.error(err.message);
+      }
+    )
+  }
+
+  public logout(){
+
+    this.appService.logout().subscribe((apiResponse) => {
+      if (apiResponse.status === 200) {
+        this.cookieService.delete('authtoken');
+        this.cookieService.delete('userId');
+        this.cookieService.delete('userName');
+        this.toastr.success("Logged out successfully")
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1000)
+      }
+      else {
+        this.toastr.error(apiResponse.message);
+      }
+    },
+      (err) => {
+        this.toastr.error(err.message);
       })
   }
 

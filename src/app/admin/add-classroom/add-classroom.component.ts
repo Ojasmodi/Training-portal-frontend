@@ -21,7 +21,26 @@ export class AddClassroomComponent implements OnInit {
 
   ngOnInit() {
     this.authToken = this.cookieService.get('authtoken');
+    this.checkStatus();
   }
+
+  public checkStatus = () => {
+
+    if(this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
+      this.cookieService.get('authtoken') === null) {
+
+      this.toastr.error("Please login first");
+      this.router.navigate(['/']);
+
+      return false;
+
+    } else {
+
+      return true;
+
+    }
+
+  } // end checkStatus
 
   public addClassroom(): any {
     if (!this.cno) {
@@ -62,6 +81,27 @@ export class AddClassroomComponent implements OnInit {
 
         });
     }
+  }
+
+  public logout(){
+
+    this.appService.logout().subscribe((apiResponse) => {
+      if (apiResponse.status === 200) {
+        this.cookieService.delete('authtoken');
+        this.cookieService.delete('userId');
+        this.cookieService.delete('userName');
+        this.toastr.success("Logged out successfully")
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1000)
+      }
+      else {
+        this.toastr.error(apiResponse.message);
+      }
+    },
+      (err) => {
+        this.toastr.error(err.message);
+      })
   }
 
 }
