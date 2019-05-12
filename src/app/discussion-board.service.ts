@@ -49,6 +49,16 @@ export class DiscussionBoardService {
     })
   }
 
+  public getreply=()=>{
+
+    return Observable.create((observer)=>{
+      this.socket.on('get-reply',(data)=>{
+        console.log("get reply on is called");
+        observer.next(data);
+      })
+    })
+  }
+
   public disconnectedSocket = () => {
 
     return Observable.create((observer) => {
@@ -71,6 +81,11 @@ export class DiscussionBoardService {
   public saveDiscussion = (data) =>{
 
     this.socket.emit('discussion', data);
+  }
+
+  public addReply = (data) =>{
+
+    this.socket.emit('reply', data);
   }
 
   public exitSocket = () =>{

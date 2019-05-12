@@ -18,6 +18,9 @@ export class DiscussionBoardComponent implements OnInit {
   public disconnectedSocket = true;
   public topic: string;
   public details: string;
+  public hasReplies=true;
+  public replyMsg:string;
+  public selectedDiscussion:any;
 
   constructor(public cookieService: CookieService, public userManagement: UserManagementService,
     public dissBoard: DiscussionBoardService, public router: Router) { }
@@ -30,8 +33,9 @@ export class DiscussionBoardComponent implements OnInit {
     this.checkStatus();
 
     this.verifyUserConfirmation();
-    this.getallDiscussions();
+    this.getaDiscussions();
     this.getPreviousDiscussions();
+    this.getReply();
   }
 
   public checkStatus: any = () => {
@@ -70,15 +74,54 @@ export class DiscussionBoardComponent implements OnInit {
     this.hasQuestion = false;
   }
 
+  view(id) {
+    for(let d of this.discussions){
+      if(d.discussionId===id){
+        d.discussionisOpen = true;
+        this.selectedDiscussion=d;
+      }
+      else{
+        d.discussionisOpen = false;
+      }
+    }
+    console.log("selected discussion "+this.selectedDiscussion.discussionId)
+  }
+
+  getReply=()=>{
+    this.dissBoard.getreply().subscribe((data)=>{
+
+      console.log("selected discussion "+this.selectedDiscussion)
+      if(this.selectedDiscussion==null)
+      {
+        this.discussions=[];
+        setTimeout(()=>{
+          this.getPreviousDiscussions();
+        },4000);
+      }
+      else if(this.selectedDiscussion.discussionId==data.discussionId){ 
+        if(this.selectedDiscussion.replies==null){
+          this.selectedDiscussion.replies=[];
+        }
+        this.selectedDiscussion.replies.push(data);
+      }
+      else{
+        this.discussions=[];
+        setTimeout(()=>{
+          this.getPreviousDiscussions();
+        },4000);
+      }
+    })
+  }
+
   getPreviousDiscussions=()=>{
 
     this.dissBoard.getPreviousDiscussions().subscribe((apiResponse) => {
-
       console.log("inside getpreviousdiscusiion");
       console.log(apiResponse);
-      if(apiResponse['status']==200)
+      if(apiResponse['status']==200){
       for(let data of apiResponse['data']){
       let diss = {
+          discussionisOpen:false,
           discussionId: data['discussionId'],
           topic: data['topic'],
           details: data['details'],
@@ -90,19 +133,14 @@ export class DiscussionBoardComponent implements OnInit {
         }
         this.discussions.push(diss);
       }
-      //
-      
-    })
-
-  }
-     
-
-  getallDiscussions = () => {
+    }
+  })
+}
+ 
+getaDiscussions = () => {
 
     console.log("getAllDiss called");
-
     this.dissBoard.getallDiscussions().subscribe((data) => {
-
       console.log("inside socket");
       console.log(data);
       let diss = {
@@ -117,12 +155,11 @@ export class DiscussionBoardComponent implements OnInit {
         }
         this.discussions.push(diss);
       //
-      
     })
 
-  }
+}
 
-  saveDiscussion = () => {
+saveDiscussion = () => {
 
     let data = {
       topic: this.topic,
@@ -137,6 +174,20 @@ export class DiscussionBoardComponent implements OnInit {
     this.topic=""
     this.details=""
     //this.getallDiscussions();
+    this.hasQuestion=true;
+}
+
+  addReply =(discussion)=>{
+    let data={
+      discussionId:discussion.discussionId,
+      replyBy:this.cookieService.get('userName'),
+      replyMsg:this.replyMsg,
+      userid_of_replier:this.cookieService.get('userId'),
+      replyCreatedOn:Date.now()
+    }
+
+    this.dissBoard.addReply(data);
+    this.replyMsg='';
   }
 
 }

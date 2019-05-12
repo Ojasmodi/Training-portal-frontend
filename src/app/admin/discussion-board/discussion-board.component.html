@@ -18,7 +18,24 @@
         <span>{{discussion.createdBy}}:</span>
         <span>{{discussion.topic}}</span>&nbsp;&nbsp;
         <span>{{discussion.createdOn|date}}</span><br>
-        <span>{{discussion.details}}</span><button class="btn btn-primary">View</button>
+        <span>{{discussion.details}}</span>
+        <button (click)="view(discussion.discussionId)" class="btn btn-primary">View</button>
+        <div *ngIf="discussion.discussionisOpen">
+          <div *ngIf="discussion.replies">
+            <div *ngFor="let reply of discussion.replies">
+              <span>{{reply.replyBy}}:</span>
+              <span>{{reply.replyMsg}}</span>&nbsp;&nbsp;
+              <span>{{discussion.replyCreatedOn|date}}</span>
+            </div>
+          </div>
+          <div *ngIf="!discussion.replies">No replies found.</div>
+          <br>
+          <div>Give reply:
+            <input type="text" class="form-control" [(ngModel)]="replyMsg" placeholder="Message" name="replyMsg"
+              required>
+          </div>
+          <button class="btn btn-primary" (click)="addReply(discussion)">Add reply</button>
+        </div>
         <hr>
       </div>
     </div>
