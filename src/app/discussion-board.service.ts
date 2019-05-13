@@ -59,6 +59,16 @@ export class DiscussionBoardService {
     })
   }
 
+  public getDeletedDiscussion=()=>{
+
+    return Observable.create((observer)=>{
+      this.socket.on('get-delete',(data)=>{
+        console.log("get delete on is called");
+        observer.next(data);
+      })
+    })
+  }
+
   public disconnectedSocket = () => {
 
     return Observable.create((observer) => {
@@ -88,10 +98,14 @@ export class DiscussionBoardService {
     this.socket.emit('reply', data);
   }
 
+  public deleteDiscussion = (data) =>{
+
+    this.socket.emit('delete-discussion',data);
+  }
+
   public exitSocket = () =>{
 
-
-    this.socket.disconnect();
+   this.socket.disconnect();
 
 
   }// end exit socket
