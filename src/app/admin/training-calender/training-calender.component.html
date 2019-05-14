@@ -1,17 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand">
-    <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Campus Connect
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-    <div class="d-flex flex-row-reverse">
-      <a class="btn btn-primary" (click)='logout()'>Log Out</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+    <a class="navbar-brand">
+        <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Campus Connect
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+
+        <div class="d-flex flex-row-reverse">
+            <a class="btn btn-info text-capitalize" (click)='logout()'>Log Out({{userName}})</a>
+        </div>
     </div>
-  </div>
 </nav>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -29,7 +30,7 @@
         <th scope="col">Trainer name</th>
         <th scope="col">Month of Program</th>
         <th scope="col">Number of Students</th>
-        <th scope="col">Delete</th>;
+        <th *ngIf="this.userType=='admin'" scope="col">Delete</th>
 
         <!--<th scope="col">Edit</th>-->
         
@@ -37,14 +38,14 @@
     </thead>
     <tbody *ngIf="schedules">
       <tr *ngFor="let schedule of schedules">
-        <th scope="row">1.
+        <th scope="row">#
         </th>
         <td>{{schedule.classNumber}}</td>
         <td>{{schedule.course}}</td>
         <td>{{schedule.trainer}}</td>
         <td>{{schedule.month}}</td>
         <td>{{schedule.noOfStudents}}</td>
-        <td><button class="button btn-danger" (click)="deleteSchedule(schedule)">Delete</button></td>
+        <td *ngIf="this.userType=='admin'"><button class="button btn-danger btn-sm" (click)="deleteSchedule(schedule)">Delete</button></td>
       </tr>
     </tbody>
   </table>

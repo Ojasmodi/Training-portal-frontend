@@ -20,8 +20,23 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userType = this._route.snapshot.paramMap.get('userType');
+    //this.userType = this._route.snapshot.paramMap.get('userType');
 
+  }
+
+  logIn = (userType) => {
+    if (userType == "admin") {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login'])
+    }
+    else if (userType == "student") {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login'])
+    }
+    else {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login']);
+    }
   }
 
   public signin() {
@@ -56,18 +71,10 @@ export class LoginComponent implements OnInit {
 
             this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails)
 
-            if (this.userType === 'admin') {
-              this.toastr.success("Taking you to the Admin section",'Login Successful');
-              setTimeout(()=>{
-                this.router.navigate(['/adminSection']);
-              },2000);
-            }
-            else if (this.userType === 'trainer') {
-              this.router.navigate(['/trainer']);
-            }
-            else {
-             this.router.navigate(['/student']);
-            }
+            this.toastr.success("Taking you to the desired section", 'Login Successful');
+            setTimeout(() => {
+              this.router.navigate(['/adminSection']);
+            }, 2000);
 
           } else {
 

@@ -15,11 +15,15 @@ export class AddClassroomComponent implements OnInit {
   public cno: any;
   public capacity: any;
   public authToken: any;
+  public userName: any;
+  public userType: any;
 
   constructor(public toastr: ToastrService, public cookieService: CookieService, public trainingManagement: TrainingManagementService, public appService: UserManagementService,
     public router: Router) { }
 
   ngOnInit() {
+    this.userType= this.cookieService.get('userType');
+    this.userName = this.cookieService.get('userName');
     this.authToken = this.cookieService.get('authtoken');
     this.checkStatus();
   }

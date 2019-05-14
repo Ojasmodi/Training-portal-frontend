@@ -1,51 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-  <a class="navbar-brand" href="#">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+    <a class="navbar-brand" href="#">
       <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Campus Connect
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+        </li>
       </ul>
       <div class="d-flex flex-row-reverse">
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                STUDENT
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'student']">LogIn</a>
-                <a class="dropdown-item" [routerLink]="['/signup', 'student']">SignUp</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ADMIN
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'admin']">LogIn</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                TRAINER
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'trainer']">LogIn</a>
-                <a class="dropdown-item"[routerLink]="['/signup', 'trainer']">SignUp</a>
-              </div>
-            </div>
-          
+        <div class="dropdown">
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            STUDENT
+          </a>
+  
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" (click)="logIn('student')">LogIn</a>
+            <a class="dropdown-item" [routerLink]="['/signup']">SignUp</a>
           </div>
-  </div>
-</nav>
+        </div>
+        <div class="dropdown">
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            ADMIN
+          </a>
+  
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" (click)="logIn('admin')">LogIn</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            TRAINER
+          </a>
+  
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" (click)="logIn('trainer')">LogIn</a>
+            <a class="dropdown-item" [routerLink]="['/signup']">SignUp</a>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </nav>
 <div class="row p-0 m-0">
 
   <div class="col-sm"></div>

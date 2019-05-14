@@ -25,20 +25,21 @@ export class AddTrainerComponent implements OnInit {
   public experience: number;
   public contactno: number;
   public emailid: string;
+  public userName;
 
-
-
-  constructor(public toastr: ToastrService, public cookieService: CookieService, public trainingManagement: TrainingManagementService, public appService: UserManagementService,
+  constructor(public toastr: ToastrService, public cookieService: CookieService,
+    public trainingManagement: TrainingManagementService, public appService: UserManagementService,
     public router: Router) { }
 
   ngOnInit() {
+    this.userName = this.cookieService.get('userName')
     this.authToken = this.cookieService.get('authtoken');
     this.checkStatus();
   }
 
   public checkStatus = () => {
 
-    if(this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
+    if (this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
       this.cookieService.get('authtoken') === null) {
 
       this.toastr.error("Please login first");
@@ -56,19 +57,19 @@ export class AddTrainerComponent implements OnInit {
 
   public addTrainer() {
 
-    if (!this.tname){
+    if (!this.tname) {
       this.toastr.warning("Enter name of trainer");
     }
-    else if (!this.age){
+    else if (!this.age) {
       this.toastr.warning("Enter age");
     }
-    else if (!this.experience){
+    else if (!this.experience) {
       this.toastr.warning("Enter experience");
     }
-    else if (!this.contactno){
+    else if (!this.contactno) {
       this.toastr.warning("Enter contact no");
     }
-    else if (!this.emailid){
+    else if (!this.emailid) {
       this.toastr.warning("Enter emailid");
     }
     else {
@@ -105,7 +106,7 @@ export class AddTrainerComponent implements OnInit {
     }
   }
 
-  public logout(){
+  public logout() {
 
     this.appService.logout().subscribe((apiResponse) => {
       if (apiResponse.status === 200) {

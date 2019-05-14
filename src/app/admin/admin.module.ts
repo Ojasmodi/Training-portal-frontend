@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+import { TutorialsComponent } from './tutorials/tutorials.component';
 
 @NgModule({
   declarations: [AdminSectionComponent, TrainingCalenderComponent,
-    ScheduleTrainingComponent, AddTrainerComponent, AddClassroomComponent, TrainersListComponent, DiscussionBoardComponent],
+    ScheduleTrainingComponent, AddTrainerComponent, AddClassroomComponent,
+    TrainersListComponent, DiscussionBoardComponent, TutorialsComponent],
   imports: [
     CommonModule, RouterModule.forChild([
       { path: 'addClassroom', component: AddClassroomComponent },
@@ -23,7 +25,8 @@ import { DiscussionBoardComponent } from './discussion-board/discussion-board.co
       { path: 'trainingCalender', component: TrainingCalenderComponent },
       { path: 'adminSection', component: AdminSectionComponent },
       { path: 'trainingForm', component: ScheduleTrainingComponent },
-      { path: 'discussionBoard', component: DiscussionBoardComponent }
+      { path: 'discussionBoard', component: DiscussionBoardComponent },
+      { path: 'tutorials', component: TutorialsComponent }
     ]),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

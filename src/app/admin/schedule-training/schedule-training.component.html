@@ -1,18 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand">
-    <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Campus Connect
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-    <div class="d-flex flex-row-reverse">
-         <a class="btn btn-primary"  (click)= 'logout()'>Log Out</a>
-    </div>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+        <a class="navbar-brand">
+            <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Campus Connect
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+
+            <div class="d-flex flex-row-reverse">
+                <a class="btn btn-info text-capitalize" (click)='logout()'>Log Out({{userName}})</a>
+            </div>
+        </div>
+    </nav>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Add Schedule here-</h1>
@@ -64,11 +65,11 @@
 
         <div class="form-group row justify-content-center">
             <div class="col-1">
-                <button (click)="addSchedule()" class="btn btn-primary">Add</button>
+                <button (click)="addSchedule()" class="btn btn-primary btn-sm">Add</button>
 
             </div>
             <div class="col-2" >
-                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="reset" class="btn btn-danger btn-sm">Reset</button>
             </div>
         </div>
     </form>

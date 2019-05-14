@@ -20,12 +20,15 @@ export class ScheduleTrainingComponent implements OnInit {
   public course = "Java";
   public noOfStudents: number = 50;
   public MOP = "June";
+  public userName;
 
-  constructor(public toastr: ToastrService, public cookieService: CookieService, public trainingManagement: TrainingManagementService, public appService: UserManagementService,
-    public router: Router) { }
+  constructor(public toastr: ToastrService, public cookieService: CookieService,
+              public trainingManagement: TrainingManagementService, public appService: UserManagementService,
+              public router: Router) { }
 
   ngOnInit() {
     this.authToken = this.cookieService.get('authToken');
+    this.userName = this.cookieService.get('userName');
     this.checkStatus();
     this.getAllClassrooms();
     this.getAllTrainers();

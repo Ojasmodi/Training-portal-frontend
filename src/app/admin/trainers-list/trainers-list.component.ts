@@ -12,13 +12,18 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class TrainersListComponent implements OnInit {
   public authToken;
+  public userName;
+  public userType;
   public trainers: [];
 
-  constructor(public toastr: ToastrService, public cookieService: CookieService, public trainingManagement: TrainingManagementService, public appService: UserManagementService,
-    public router: Router) { }
+  constructor(public toastr: ToastrService, public cookieService: CookieService,
+              public trainingManagement: TrainingManagementService, public appService: UserManagementService,
+              public router: Router) { }
 
   ngOnInit() {
     this.authToken = this.cookieService.get('authToken');
+    this.userName =this.cookieService.get('userName');
+    this.userType=this.cookieService.get('userType');
     this.checkStatus();
     this.getAllTrainers();
   }

@@ -15,6 +15,7 @@ export class AdminSectionComponent implements OnInit {
   public userInfo: any;
   public userId: any;
   public userName: any;
+  public userType: any;
 
   constructor(public AppService: UserManagementService,
     public router: Router,
@@ -23,7 +24,7 @@ export class AdminSectionComponent implements OnInit {
   ) {
 
     this.userId = this.cookieService.get('userId');
-
+    this.userType= this.cookieService.get('userType');
     this.userName = this.cookieService.get('userName');
   }
 

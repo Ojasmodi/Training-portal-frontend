@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserManagementService } from 'src/app/user-management.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signup',
@@ -19,10 +20,26 @@ export class SignupComponent implements OnInit {
   constructor(
     public appService: UserManagementService,
     public router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    public cookieService: CookieService) {
   }
 
   ngOnInit() {
+  }
+
+  logIn = (userType) => {
+    if (userType == "admin") {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login'])
+    }
+    else if (userType == "student") {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login'])
+    }
+    else {
+      this.cookieService.set('userType', userType);
+      this.router.navigate(['/login']);
+    }
   }
 
   public goToSignIn: any = () => {

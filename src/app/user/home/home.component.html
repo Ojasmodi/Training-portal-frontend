@@ -1,81 +1,88 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
   <a class="navbar-brand" href="#">
-      <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Campus Connect
+    <img src="./../../../assets/ccImage.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Campus Connect
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-      </ul>
-      <div class="d-flex flex-row-reverse">
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                STUDENT
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'student']">LogIn</a>
-                <a class="dropdown-item" [routerLink]="['/signup', 'student']">SignUp</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ADMIN
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'admin']">LogIn</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                TRAINER
-              </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="['/login', 'trainer']">LogIn</a>
-                <a class="dropdown-item"[routerLink]="['/signup', 'trainer']">SignUp</a>
-              </div>
-            </div>
-          
-          </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <div class="d-flex flex-row-reverse">
+      <div class="dropdown">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          STUDENT
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" (click)="logIn('student')">LogIn</a>
+          <a class="dropdown-item" [routerLink]="['/signup']">SignUp</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          ADMIN
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" (click)="logIn('admin')">LogIn</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          TRAINER
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" (click)="logIn('trainer')">LogIn</a>
+          <a class="dropdown-item" [routerLink]="['/signup']">SignUp</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </nav>
 
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-      <h1 class="display-4">Welcome to Campus Connect</h1>
-      <p class="lead">Explore different things here....</p>
+    <h1 class="display-4">Welcome to Campus Connect</h1>
+    <p class="lead">Please login to explore options...</p>
   </div>
 </div>
 <div class="container">
   <div class="row justify-content-around">
-      <div class="col-4 ">
-          <div class="card top-margin border border-info" style="width: 18rem; margin-top: 1vh;margin-bottom: 3vh; background:#c9d7e2;">
-              <img src="./../../../assets/stud.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">Are you a student?</h5>
-                  <p class="card-text">You can learn skills, give online assessments and generate your Certificate.</p>
-                  <a routerLink="/login" class="btn btn-primary">Click to explore...</a>
-              </div>
-          </div>
+    <div class="col-4 ">
+      <div class="card top-margin border border-info"
+        style="width: 18rem; margin-top: 1vh;margin-bottom: 3vh; background:#c9d7e2;">
+        <img src="./../../../assets/stud.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Are you a student?</h5>
+          <p class="card-text">You can learn skills, give online assessments and generate your Certificate.</p>
+          <a routerLink="/login" class="btn btn-primary">Click to explore...</a>
+        </div>
       </div>
+    </div>
 
-      <div class="col-4">
-          <div class="card top-margin border border-info" style="width: 18rem; margin-top: 1vh;margin-bottom: 4vh; background:#c9d7e2;">
-              <img src="./../../../assets/proff.jpg"  width="276px" height="181px" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">Are you a Professional?</h5>
-                  <p class="card-text">View Training calender, add youself as a Trainer and design questions for the assessments.</p>
-                  <a routerLink="/login" class="btn btn-primary">Click to explore...</a>
-              </div>
-          </div>
+    <div class="col-4">
+      <div class="card top-margin border border-info"
+        style="width: 18rem; margin-top: 1vh;margin-bottom: 4vh; background:#c9d7e2;">
+        <img src="./../../../assets/proff.jpg" width="276px" height="181px" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Are you a Professional?</h5>
+          <p class="card-text">View Training calender, add youself as a Trainer and design questions for the
+            assessments.</p>
+          <a routerLink="/login" class="btn btn-primary">Click to explore...</a>
+        </div>
       </div>
+    </div>
   </div>
 </div>
