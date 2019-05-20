@@ -24,7 +24,7 @@ export class AdminSectionComponent implements OnInit {
   ) {
 
     this.userId = this.cookieService.get('userId');
-    this.userType= this.cookieService.get('userType');
+    this.userType = this.cookieService.get('userType');
     this.userName = this.cookieService.get('userName');
   }
 
@@ -38,10 +38,10 @@ export class AdminSectionComponent implements OnInit {
 
   public checkStatus = () => {
 
-    if(this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
+    if (this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
       this.cookieService.get('authtoken') === null) {
 
-      this.toastr.error("Please login first");
+      this.toastr.error("Please login first.");
       this.router.navigate(['/']);
 
       return false;
@@ -54,24 +54,24 @@ export class AdminSectionComponent implements OnInit {
 
   } // end checkStatus
 
-  public logout(){
+  public logout() {
 
-  this.AppService.logout().subscribe((apiResponse) => {
-    if (apiResponse.status === 200) {
-      this.cookieService.delete('authtoken');
-      this.cookieService.delete('userId');
-      this.cookieService.delete('userName');
-      this.toastr.success("Logged out successfully")
-      setTimeout(() => {
-        this.router.navigate(['/']);
-      }, 1000)
-    }
-    else {
-      this.toastr.error(apiResponse.message);
-    }
-  },
-    (err) => {
-      this.toastr.error(err.message);
-    })
-}
+    this.AppService.logout().subscribe((apiResponse) => {
+      if (apiResponse.status === 200) {
+        this.cookieService.delete('authtoken');
+        this.cookieService.delete('userId');
+        this.cookieService.delete('userName');
+        this.toastr.success("Logged out successfully.")
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1000)
+      }
+      else {
+        this.toastr.error(apiResponse.message);
+      }
+    },
+      (err) => {
+        this.toastr.error(err.message);
+      })
+  }
 }

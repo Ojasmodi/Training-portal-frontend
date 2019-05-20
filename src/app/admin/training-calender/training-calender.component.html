@@ -16,7 +16,7 @@
 </nav>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Training-Calender</h1>
+    <h1 class="display-4">Training-Calender-</h1>
 
   </div>
 </div>
@@ -42,7 +42,7 @@
         </th>
         <td>{{schedule.classNumber}}</td>
         <td>{{schedule.course}}</td>
-        <td>{{schedule.trainer}}</td>
+        <td class="text-capitalize">{{schedule.trainer}}</td>
         <td>{{schedule.month}}</td>
         <td>{{schedule.noOfStudents}}</td>
         <td *ngIf="this.userType=='admin'"><button class="button btn-danger btn-sm" (click)="deleteSchedule(schedule)">Delete</button></td>

@@ -33,7 +33,7 @@ export class TrainersListComponent implements OnInit {
     if(this.cookieService.get('authtoken') === undefined || this.cookieService.get('authtoken') === '' ||
       this.cookieService.get('authtoken') === null) {
 
-      this.toastr.error("Please login first");
+      this.toastr.error("Please login first.");
       this.router.navigate(['/']);
 
       return false;
@@ -63,7 +63,7 @@ export class TrainersListComponent implements OnInit {
 
     this.trainingManagement.deleteTrainer(id).subscribe((apiResponse) => {
       if (apiResponse.status === 200) {
-        this.toastr.success("Trainer deleted successfully !");
+        this.toastr.success("Trainer deleted successfully!");
         setTimeout(() => {
           this.router.navigate(['/trainersList']);
         }, 1000);

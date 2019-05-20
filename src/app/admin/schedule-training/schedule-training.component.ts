@@ -15,8 +15,8 @@ export class ScheduleTrainingComponent implements OnInit {
   public authToken: any;
   public classrooms = [];
   public trainers = [];
-  public selectedTrainer;
-  public selectedClass;
+  public selectedTrainer
+  public selectedClass
   public course = "Java";
   public noOfStudents: number = 50;
   public MOP = "June";
@@ -58,12 +58,13 @@ export class ScheduleTrainingComponent implements OnInit {
       .subscribe((apiResponse) => {
         if (apiResponse.status === 200) {
           this.classrooms = apiResponse.data;
+          //this.selectedClass = this.classrooms[0];
           console.log(this.classrooms);
-          console.log("class found")
+          //console.log("class found")
         }
         else {
           this.toastr.error("Some error occured");
-          console.log("class not found")
+          //console.log("class not found")
         }
       })
   }
@@ -73,6 +74,7 @@ export class ScheduleTrainingComponent implements OnInit {
       .subscribe((apiResponse) => {
         if (apiResponse.status === 200) {
           this.trainers = apiResponse.data;
+          //this.selectedTrainer = this.trainers[0];
           console.log(this.trainers);
           console.log("trainers-found")
         }
@@ -86,7 +88,13 @@ export class ScheduleTrainingComponent implements OnInit {
 
   addSchedule() {
     if (!this.noOfStudents) {
-      this.toastr.warning("Enter number of students !")
+      this.toastr.warning("Enter number of students!")
+    }
+    else if (!this.selectedClass) {
+      this.toastr.warning("Select a classroom!")
+    }
+    else if (!this.selectedTrainer) {
+      this.toastr.warning("Select a trainer!")
     }
     else {
       const data = {

@@ -45,20 +45,24 @@
       <tr *ngFor="let trainer of trainers">
         <th scope="row">#
         </th>
-        <td>{{trainer.name}}</td>
+        <td class="text-capitalize">{{trainer.name}}</td>
         <td>{{trainer.age}}</td>
-        <td>{{trainer.contactNo}}</td>
+        <td>{{trainer.contactNo?'trainer.contactNo':'Not-given'}}</td>
         <td>{{trainer.email}}</td>
-        <td>{{trainer.knowsJava}}</td>
-        <td>{{trainer.knowsC}}</td>
-        <td>{{trainer.knowsAndroid}}</td>
+        <td>{{trainer.knowsJava?'Skilled':'Not-skilled'}}</td>
+        <td>{{trainer.knowsC?'Skilled':'Not-skilled'}}</td>
+        <td>{{trainer.knowsAndroid?'Skilled':'Not-skilled'}}</td>
         <td>{{trainer.experience}}</td>
-        <td>{{trainer.mayAvailable}}</td>
-        <td>{{trainer.juneAvailable}}</td>
-        <td>{{trainer.julyAvailable}}</td>
-        <td *ngIf="this.userType=='admin'"><button class="button btn-primary btn-sm" (click)="deleteTrainer(trainer.trainerId)">Edit</button></td>
-        <td *ngIf="this.userType=='admin'"><button class="button btn-danger btn-sm" (click)="deleteTrainer(trainer.trainerId)">Delete</button></td>
+        <td>{{trainer.mayAvailable?'Available':'Not-available'}}</td>
+        <td>{{trainer.juneAvailable?'Available':'Not-available'}}</td>
+        <td>{{trainer.julyAvailable?'Available':'Not-available'}}</td>
+        <td *ngIf="this.userType=='admin'"><button class="button btn-primary btn-sm" (click)="editTrainer(trainer.trainerId)">Edit</button></td>
+        <td *ngIf="this.userType=='admin'">
+            
+          <button class="button btn-danger btn-sm" (click)="deleteTrainer(trainer.trainerId)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+

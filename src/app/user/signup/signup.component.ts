@@ -51,20 +51,20 @@ export class SignupComponent implements OnInit {
   public signupFunction: any = () => {
 
     if (!this.firstName) {
-      this.toastr.warning('enter first name')
+      this.toastr.warning('Enter first name.')
 
 
     } else if (!this.lastName) {
-      this.toastr.warning('enter last name')
+      this.toastr.warning('Enter last name.')
 
     } else if (!this.mobile) {
-      this.toastr.warning('enter mobile')
+      this.toastr.warning('Enter mobile.')
 
     } else if (!this.email) {
-      this.toastr.warning('enter email')
+      this.toastr.warning('Enter email.')
 
     } else if (!this.password) {
-      this.toastr.warning('enter password')
+      this.toastr.warning('Enter password.')
 
 
     } else {
@@ -102,7 +102,7 @@ export class SignupComponent implements OnInit {
 
         }, (err) => {
 
-          this.toastr.error('Some error occured');
+          this.toastr.error('Some error occured.');
 
         });
 

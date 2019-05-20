@@ -13,17 +13,7 @@ export class UserManagementService {
   constructor(public http: HttpClient, private cookieService: CookieService) { }
 
   public signupFunction(data): any {
-    /*const params = new HttpParams()
-      .set('firstname', data.firstName)
-      .set('lastName', data.lastName)
-      .set('mobile', data.mobile)
-      .set('email', data.email)
-      .set('password', data.password)
-      .set('authToken', data.authToken);*/
-
-   // return this.http.post(`${this.url}/api/v1/users/signup`, params);
-  // return this.http.post(`${this.url}/api/v1/users/signup?authToken=${data.accessToken}`, data);
-  return this.http.post(`${this.url}/api/v1/users/signup`, data);
+    return this.http.post(`${this.url}/api/v1/users/signup`, data);
   }
 
   public getUserInfoFromLocalStorage=()=>{
@@ -35,11 +25,7 @@ export class UserManagementService {
   }
 
   public signinFunction(data): any {
-    // const params = new HttpParams()
-     //  .set('email', data.email)
-     //  .set('password', data.response);
     return this.http.post(`${this.url}/api/v1/users/login`, data);
-
   }
 
   public logout(): Observable<any> {
@@ -48,10 +34,11 @@ export class UserManagementService {
       .set('authToken', this.cookieService.get('authtoken'))
 
     return this.http.post(`${this.url}/api/v1/users/logout`, params);
-
   } // end logout function
 
-  
+  public resetPassword=(data)=>{
+    return this.http.post(`${this.url}/api/v1/users/resetpass`, data);
+  }
 
   private handleError(err: HttpErrorResponse) {
 

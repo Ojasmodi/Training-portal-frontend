@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   logIn = (userType) => {
+    this.cookieService.deleteAll();
     if (userType == "admin") {
       this.cookieService.set('userType', userType);
       this.router.navigate(['/login'])

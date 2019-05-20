@@ -76,7 +76,7 @@ export class TrainingCalenderComponent implements OnInit {
       if (apiResponse.status === 200) {
         this.toastr.success("Schedule deleted successfully !");
         setTimeout(() => {
-          this.router.navigate(['/trainingCalender']);
+          this.router.navigate(['/adminSection']);
         }, 1000);
       }
       else {
