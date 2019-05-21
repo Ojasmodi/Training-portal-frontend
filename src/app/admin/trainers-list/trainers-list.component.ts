@@ -78,6 +78,10 @@ export class TrainersListComponent implements OnInit {
     )
   }
 
+  public editTrainer(id){
+    this.toastr.warning("Under maintenance")
+  }
+
   public logout(){
 
     this.appService.logout().subscribe((apiResponse) => {
