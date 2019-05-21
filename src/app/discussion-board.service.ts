@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import * as io from 'socket.io-client';
 
-import {Observable} from 'rxjs';
-import {tap, catchError} from 'rxjs/Operators';
+import { Observable } from 'rxjs';
+import { tap, catchError } from 'rxjs/Operators';
 
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DiscussionBoardService {
 
-  private url="http://localhost:3000";
+  private url = "http://api.myinfo.world";
   private socket;
 
   constructor(public http: HttpClient, public cookieService: CookieService) {
@@ -25,44 +25,44 @@ export class DiscussionBoardService {
 
   }
 
-  public verifyUser=()=>{
+  public verifyUser = () => {
 
-    return Observable.create((observer)=>{
-      this.socket.on('verifyUser',(data)=>{
+    return Observable.create((observer) => {
+      this.socket.on('verifyUser', (data) => {
         observer.next(data);
       })
     })
   }
 
-  public getPreviousDiscussions=()=>{
+  public getPreviousDiscussions = () => {
 
     return this.http.get(`${this.url}/api/v1/discussion/discussions/all`);
   }
 
-  public getallDiscussions=()=>{
+  public getallDiscussions = () => {
 
-    return Observable.create((observer)=>{
-      this.socket.on('get-discussion',(data)=>{
+    return Observable.create((observer) => {
+      this.socket.on('get-discussion', (data) => {
         console.log("on is called");
         observer.next(data);
       })
     })
   }
 
-  public getreply=()=>{
+  public getreply = () => {
 
-    return Observable.create((observer)=>{
-      this.socket.on('get-reply',(data)=>{
+    return Observable.create((observer) => {
+      this.socket.on('get-reply', (data) => {
         console.log("get reply on is called");
         observer.next(data);
       })
     })
   }
 
-  public getDeletedDiscussion=()=>{
+  public getDeletedDiscussion = () => {
 
-    return Observable.create((observer)=>{
-      this.socket.on('get-delete',(data)=>{
+    return Observable.create((observer) => {
+      this.socket.on('get-delete', (data) => {
         console.log("get delete on is called");
         observer.next(data);
       })
@@ -88,24 +88,24 @@ export class DiscussionBoardService {
 
   } // end setUser
 
-  public saveDiscussion = (data) =>{
+  public saveDiscussion = (data) => {
 
     this.socket.emit('discussion', data);
   }
 
-  public addReply = (data) =>{
+  public addReply = (data) => {
 
     this.socket.emit('reply', data);
   }
 
-  public deleteDiscussion = (data) =>{
+  public deleteDiscussion = (data) => {
 
-    this.socket.emit('delete-discussion',data);
+    this.socket.emit('delete-discussion', data);
   }
 
-  public exitSocket = () =>{
+  public exitSocket = () => {
 
-   this.socket.disconnect();
+    this.socket.disconnect();
 
 
   }// end exit socket

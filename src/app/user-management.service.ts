@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UserManagementService {
 
-  private url = 'http://localhost:3000';
+  private url = 'http://api.myinfo.world';
   constructor(public http: HttpClient, private cookieService: CookieService) { }
 
   public signupFunction(data): any {

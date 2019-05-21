@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class TrainingManagementService {
 
 
-  private url = 'http://localhost:3000/api/v1';
+  private url = 'http://api.myinfo.world/api/v1';
 
   constructor(public _http: HttpClient) { }
 
